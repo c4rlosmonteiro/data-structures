@@ -7,12 +7,12 @@ import com.github.carlosmonteiro.structures.Node;
  *
  * @author Carlos Monteiro
  */
-public class LinkedList<T> {
+public class LinkedListR<T> {
     private Node<T> head;
     private Node<T> tail;
     private int length;
 
-    public LinkedList(final T value) {
+    public LinkedListR(final T value) {
         final Node<T> node = new Node<T>(value);
         head = node;
         tail = node;
@@ -60,17 +60,15 @@ public class LinkedList<T> {
     }
 
     private Node<T> getBefore(final Node<T> head, final Node<T> target) {
-        Node<T> aux = head;
-
-        while (aux.hasNext()) {
-            if (aux.getNext().equals(target)) {
-                return aux;
-            }
-
-            aux = aux.getNext();
+        if (!head.hasNext()) {
+            return null;
         }
 
-        return null;
+        if (head.getNext().equals(target)) {
+            return head;
+        } else {
+            return getBefore(head.getNext(), target);
+        }
     }
 
     public int getLength() {
@@ -78,22 +76,16 @@ public class LinkedList<T> {
     }
 
     public String print() {
-        final StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("[");
+        return "["+print(head)+"]" + " l=" + length;
+    }
 
-        Node<T> aux = head;
-
-        while (aux != null) {
-            stringBuilder.append(aux);
-            aux = aux.getNext();
-
-            if (aux != null) {
-                stringBuilder.append(",");
-            }
+    private String print(final Node<T> node) {
+        if (node != null && node.hasNext()) {
+            return node + "," + print(node.getNext());
+        } else if (node != null) {
+            return node.toString();
+        } else {
+            return "";
         }
-
-        stringBuilder.append("]");
-        stringBuilder.append(" l=" + length);
-        return stringBuilder.toString();
     }
 }
