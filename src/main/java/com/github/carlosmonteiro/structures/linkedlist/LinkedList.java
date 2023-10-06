@@ -3,7 +3,7 @@ package com.github.carlosmonteiro.structures.linkedlist;
 import com.github.carlosmonteiro.structures.Node;
 
 /**
- * Recursive linked list.
+ * linked list.
  *
  * @author Carlos Monteiro
  */
@@ -20,21 +20,88 @@ public class LinkedList<T> {
     }
 
     public void append(final T value) {
-        final Node<T> node = new Node<T>(value);
+        final Node<T> node = new Node<>(value);
 
-        if (length == 0) {
+        if (isEmpty()) {
             head = node;
-            tail = node;
         } else {
             tail.setNext(node);
+        }
+
+        tail = node;
+        length++;
+    }
+
+    public void prepend(final T value) {
+        final Node<T> node = new Node<>(value);
+        node.setNext(head);
+        head = node;
+
+        if (isEmpty()) {
             tail = node;
         }
 
         length++;
     }
 
+    public T get(final int index) {
+        final Node<T> node = getNode(index);
+
+        if (node != null) {
+            return node.getValue();
+        } else {
+            return null;
+        }
+    }
+
+    private Node<T> getNode(final int index) {
+        if (index < 0 || index >= length) {
+            return null;
+        }
+
+        Node<T> aux = head;
+
+        for (int i = 0; i < index; i++) {
+            aux = aux.getNext();
+        }
+
+        return aux;
+    }
+
+    public boolean set(final int index, final T value) {
+        if (index < 0 || index >= length) {
+            return false;
+        }
+
+        getNode(index).setValue(value);
+
+        return true;
+    }
+
+    public T removeFirst() {
+        if (isEmpty()) {
+            return null;
+        }
+
+        final Node<T> first = head;
+
+        if (first.getNext() == null) {
+            head = null;
+            tail = null;
+        } else {
+            head = first.getNext();
+
+            if (length == 1) {
+                tail = first.getNext();
+            }
+        }
+
+        length--;
+        return first.getValue();
+    }
+
     public T removeLast() {
-        if (length == 0) {
+        if (isEmpty()) {
             return null;
         }
 
@@ -75,6 +142,10 @@ public class LinkedList<T> {
 
     public int getLength() {
         return length;
+    }
+
+    public boolean isEmpty() {
+        return length == 0;
     }
 
     public String print() {
