@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * @author Carlos Monteiro
  */
 public class Main {
-    public static void main(final String [] args) {
+    public static void main(final String[] args) {
         System.out.println("Recursive version ========");
         //appendR();
         //removeLastR();
@@ -19,7 +19,31 @@ public class Main {
         //set();
         //insert();
         //remove();
-        reverse();
+        //reverse();
+        findMiddleValue();
+    }
+
+
+    public static void findMiddleValue() {
+        final LinkedList<Integer> ll = new LinkedList<>(0);
+        ll.removeFirst();
+        System.out.println("["+ll.print()+"] middle -> " + ll.findMiddleValue());
+        ll.append(0);
+        System.out.println("["+ll.print()+"] middle -> " + ll.findMiddleValue());
+        ll.append(1);
+        System.out.println("["+ll.print()+"] middle -> " + ll.findMiddleValue());
+        ll.append(2);
+        System.out.println("["+ll.print()+"] middle -> " + ll.findMiddleValue());
+        ll.append(3);
+        System.out.println("["+ll.print()+"] middle -> " + ll.findMiddleValue());
+        ll.append(4);
+        System.out.println("["+ll.print()+"] middle -> " + ll.findMiddleValue());
+        ll.append(5);
+        System.out.println("["+ll.print()+"] middle -> " + ll.findMiddleValue());
+        ll.append(6);
+        System.out.println("["+ll.print()+"] middle -> " + ll.findMiddleValue());
+        ll.append(7);
+        System.out.println("["+ll.print()+"] middle -> " + ll.findMiddleValue());
     }
 
     public static void reverse() {

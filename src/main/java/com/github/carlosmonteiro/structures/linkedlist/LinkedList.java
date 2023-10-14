@@ -186,6 +186,28 @@ public class LinkedList<T> {
         }
     }
 
+    /**
+     * Finding middle value using Floyd’s Cycle Finding Algorithm
+     *
+     * Floyd’s cycle finding algorithm or Hare-Tortoise algorithm is a pointer algorithm that uses only two pointers,
+     * moving through the sequence at different speeds. This algorithm is used to find a loop in a linked list. It uses
+     * two pointers one moving twice as fast as the other one. The faster one is called the fast pointer and the other
+     * one is called the slow pointer.
+     *
+     * @see https://www.geeksforgeeks.org/floyds-cycle-finding-algorithm/
+     */
+    public T findMiddleValue() {
+        Node<T> slow = head;
+        Node<T> fast = head;
+
+        while (fast != null && fast.getNext() != null) {
+            slow = slow.getNext();
+            fast = fast.getNext().getNext();
+        }
+
+        return slow != null ? slow.getValue() : null;
+    }
+
     private Node<T> getBefore(final Node<T> head, final Node<T> target) {
         Node<T> aux = head;
 
