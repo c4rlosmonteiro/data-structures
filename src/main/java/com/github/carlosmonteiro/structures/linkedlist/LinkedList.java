@@ -44,6 +44,66 @@ public class LinkedList<T> {
         length++;
     }
 
+    public boolean insert(final int index, final T value) {
+        if (isInvalidPosition(index)) {
+            return false;
+        }
+
+        if (index == 0) {
+            append(value);
+            return true;
+        }
+
+        if (index == length) {
+            prepend(value);
+            return true;
+        }
+
+        final Node<T> node = new Node<>(value);
+        final Node<T> nodeAtPreviousPosition = getNode(index - 1);
+
+        node.setNext(nodeAtPreviousPosition.getNext());
+        nodeAtPreviousPosition.setNext(node);
+        length++;
+        return true;
+    }
+
+    public T remove(final int index) {
+        if (isInvalidPosition(index) || isEmpty()) {
+            return null;
+        }
+
+        if (index == 0) {
+            return removeFirst();
+        }
+
+        if (index == length) {
+            return removeLast();
+        }
+
+        final Node<T> nodeAtPreviousPosition = getNode(index - 1);
+        final Node<T> removedNode = nodeAtPreviousPosition.getNext();
+        nodeAtPreviousPosition.setNext(removedNode.getNext());
+        length--;
+        return removedNode.getValue();
+    }
+
+    public void reverse() {
+        Node<T> previous = null;
+        Node<T> actual = head;
+
+        final Node<T> temp = tail;
+        tail = head;
+        head = temp;
+
+        while (actual != null) {
+            final Node<T> next = actual.getNext();
+            actual.setNext(previous);
+            previous = actual;
+            actual = next;
+        }
+    }
+
     public T get(final int index) {
         final Node<T> node = getNode(index);
 
@@ -69,7 +129,7 @@ public class LinkedList<T> {
     }
 
     public boolean set(final int index, final T value) {
-        if (index < 0 || index >= length) {
+        if (isInvalidPosition(index)) {
             return false;
         }
 
@@ -146,6 +206,10 @@ public class LinkedList<T> {
 
     public boolean isEmpty() {
         return length == 0;
+    }
+
+    private boolean isInvalidPosition(final int index) {
+        return index < 0 || index >= length;
     }
 
     public String print() {

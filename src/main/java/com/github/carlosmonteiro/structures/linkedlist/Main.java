@@ -1,5 +1,7 @@
 package com.github.carlosmonteiro.structures.linkedlist;
 
+import java.util.ArrayList;
+
 /**
  * @author Carlos Monteiro
  */
@@ -15,6 +17,98 @@ public class Main {
         //removeFirst();
         //get();
         //set();
+        //insert();
+        //remove();
+        reverse();
+    }
+
+    public static void reverse() {
+        final LinkedList<Integer> ll = new LinkedList<>(0);
+        ll.append(1);
+        ll.append(2);
+        ll.append(3);
+        ll.append(4);
+        System.out.println(ll.print());
+        System.out.println("reverse");
+        ll.reverse();
+        System.out.println(ll.print());
+        System.out.println("reverse");
+        ll.reverse();
+        System.out.println(ll.print());
+
+        final LinkedList<Integer> ll2 = new LinkedList<>(0);
+        ll2.removeFirst();
+        System.out.println("empty ===========" + ll2.print());
+        System.out.println(ll2.print());
+        ll2.reverse();
+
+        final LinkedList<Integer> ll3 = new LinkedList<>(0);
+        System.out.println("1 item ========= " + ll3.print());
+        ll3.reverse();
+        System.out.println(ll3.print());
+        ll3.reverse();
+        System.out.println(ll3.print());
+        System.out.println("add more one [+]");
+        ll3.append(991);
+        System.out.println(ll3.print());
+
+
+        final LinkedList<Integer> ll4 = new LinkedList<>(0);
+        ll4.append(1);
+        System.out.println("2 item ========= " + ll4.print());
+        ll4.reverse();
+        System.out.println(ll4.print());
+        ll4.reverse();
+        System.out.println(ll4.print());
+        System.out.println("add more one [+]");
+        ll4.append(992);
+        System.out.println(ll4.print());
+    }
+
+    public static void remove() {
+        final LinkedList<Integer> ll = new LinkedList<>(0);
+        ll.append(1);
+        ll.append(2);
+        ll.append(3);
+        ll.append(4);
+        System.out.println(ll.print());
+        System.out.println("remove(2) -> " + ll.remove(2));
+        System.out.println(ll.print());
+        System.out.println("remove(0) -> " + ll.remove(0));
+        System.out.println(ll.print());
+        System.out.println("remove(2) -> " + ll.remove(2));
+        System.out.println(ll.print());
+        System.out.println("remove(2) -> " + ll.remove(2));
+        System.out.println(ll.print());
+        System.out.println("remove(-1) -> " + ll.remove(-1));
+        System.out.println(ll.print());
+        System.out.println("remove(0) -> " + ll.remove(0));
+        System.out.println(ll.print());
+        System.out.println("remove(0) -> " + ll.remove(0));
+        System.out.println(ll.print());
+        System.out.println("remove(0) -> " + ll.remove(0));
+        System.out.println(ll.print());
+
+    }
+
+    public static void insert() {
+        final LinkedList<Integer> ll = new LinkedList<>(0);
+        ll.append(1);
+        ll.append(2);
+        ll.append(3);
+        ll.append(4);
+        System.out.println(ll.print());
+        System.out.println("");
+        System.out.println("insert(2, 992) -> " + ll.insert(2, 992));
+        System.out.println(ll.print());
+        System.out.println("insert(0, 990) -> " + ll.insert(0, 990));
+        System.out.println(ll.print());
+        System.out.println("insert(6, 996) -> " + ll.insert(6, 996));
+        System.out.println(ll.print());
+        System.out.println("insert(9, 999) -> " + ll.insert(9, 999));
+        System.out.println(ll.print());
+        System.out.println("insert(-1, -991) -> " + ll.insert(-1, -991));
+        System.out.println(ll.print());
     }
 
     public static void set() {
