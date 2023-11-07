@@ -285,6 +285,21 @@ public class LinkedList<T> {
         }
     }
 
+    public int binaryToDecimal() {
+        int exp = length - 1;
+        int decimal = 0;
+        Node<T> aux = head;
+
+        while (aux != null) {
+            decimal += Math.pow(2, exp) * (Integer) aux.getValue();
+            exp--;
+            aux = aux.getNext();
+        }
+
+        return decimal;
+    }
+
+
     /**
      * Given a value x this method will to rearrange the linked list such that all nodes with a
      * value less than x come before all nodes with a value greater than or equal to x.

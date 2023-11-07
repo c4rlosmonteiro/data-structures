@@ -27,7 +27,18 @@ public class Main {
         //findMiddleValue();
         //findKthFromEnd();
         //partitionList();
-        removeDuplicates();
+        //removeDuplicates();
+        binaryToDecimal();
+    }
+
+    public static void binaryToDecimal() {
+        final LinkedList<Integer> ll = new LinkedList<>(1);
+
+        ll.append(0);
+        ll.append(1);
+
+        System.out.println("original -> " + ll.print());
+        System.out.println("decimal -> " + ll.binaryToDecimal());
     }
 
     public static void removeDuplicates() {
