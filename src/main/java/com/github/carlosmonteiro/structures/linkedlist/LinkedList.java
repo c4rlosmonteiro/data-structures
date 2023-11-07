@@ -2,6 +2,8 @@ package com.github.carlosmonteiro.structures.linkedlist;
 
 import com.github.carlosmonteiro.structures.Node;
 
+import java.util.Comparator;
+
 /**
  * linked list.
  *
@@ -206,6 +208,127 @@ public class LinkedList<T> {
         }
 
         return slow != null ? slow.getValue() : null;
+    }
+
+    /**
+     * Check if it has loop using Floyd’s Cycle Finding Algorithm
+    */
+    public boolean hasLoop() {
+        Node<T> slow = head;
+        Node<T> fast = head;
+
+        while (fast != null && fast.getNext() != null) {
+            slow = slow.getNext();
+            fast = fast.getNext().getNext();
+
+            if (slow == fast) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * This is an exercise that doesn't consider the existence of the length attribute.
+     */
+    public T findKthFromEnd(final int k) {
+        Node<T> slow = head;
+        Node<T> fast = head;
+
+        int distance = 1;
+
+        while (fast != null && fast.getNext() != null) {
+            if (distance < k) {
+                distance++;
+            } else {
+                slow = slow.getNext();
+            }
+
+            fast = fast.getNext();
+        }
+
+        if (distance == k) {
+            return slow.getValue();
+        } else {
+            return null;
+        }
+    }
+
+    /**
+     * Given a value x this method will to rearrange the linked list such that all nodes with a
+     * value less than x come before all nodes with a value greater than or equal to x.
+     */
+    public void partitionList(final T x, Comparator<T> comparator) {
+        Node<T> gtThanX = null;
+        Node<T> gtThanXHead = null;
+        Node<T> ltThanX = null;
+        Node<T> ltThanXHead = null;
+        Node<T> aux = head;
+
+        if (aux != null) {
+            while (aux != null) {
+                if (comparator.compare(aux.getValue(), x) < 0) {
+                    boolean isNull = ltThanX == null;
+                    ltThanX = appendTwoNodes(ltThanX, aux);
+
+                    if (ltThanXHead == null) {
+                        ltThanXHead = ltThanX;
+                    }
+
+                    if (!isNull) {
+                        ltThanX = ltThanX.getNext();
+                    }
+                } else {
+                    boolean isNull = gtThanX == null;
+                    gtThanX = appendTwoNodes(gtThanX, aux);
+
+                    if (gtThanXHead == null) {
+                        gtThanXHead = gtThanX;
+                    }
+
+                    if (!isNull) {
+                        gtThanX = gtThanX.getNext();
+                    }
+                }
+
+                aux = aux.getNext();
+            }
+
+            if (gtThanX != null) {
+                tail = gtThanX;
+                gtThanX.setNext(null);
+            } else {
+                tail = ltThanX;
+                ltThanX.setNext(null);
+            }
+
+            appendTwoNodes(ltThanX, gtThanXHead);
+
+            if (ltThanXHead != null) {
+                head = ltThanXHead;
+            } else {
+                head = gtThanXHead;
+            };
+        }
+    }
+
+    private Node<T> appendToNode(final Node<T> a, final T value) {
+        final Node<T> b = new Node<T>(value);
+        return appendTwoNodes(a, b);
+    }
+
+    private Node<T> appendTwoNodes(Node<T> a, Node<T> b) {
+        if (a == null) {
+            a = b;
+            return a;
+        } else if (b == null) {
+            b = a;
+            return b;
+        } else {
+            a.setNext(b);
+            return a;
+        }
     }
 
     private Node<T> getBefore(final Node<T> head, final Node<T> target) {

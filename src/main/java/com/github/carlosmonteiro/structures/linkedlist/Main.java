@@ -20,7 +20,35 @@ public class Main {
         //insert();
         //remove();
         //reverse();
-        findMiddleValue();
+        //findMiddleValue();
+        //findKthFromEnd();
+        partitionList();
+    }
+
+    public static void partitionList() {
+        final LinkedList<Integer> ll = new LinkedList<>(0);
+        ll.append(3);
+        ll.append(2);
+        ll.append(1);
+        ll.append(5);
+        ll.append(4);
+
+        System.out.println("original -> " + ll.print());
+
+        ll.partitionList(10, Integer::compareTo);
+
+        System.out.println("new -> " + ll.print());
+    }
+
+    public static void findKthFromEnd() {
+        final LinkedList<Integer> ll = new LinkedList<>(0);
+        ll.append(1);
+        ll.append(2);
+        ll.append(3);
+        ll.append(4);
+        ll.append(5);
+
+        ll.findKthFromEnd(2);
     }
 
 
