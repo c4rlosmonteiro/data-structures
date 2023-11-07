@@ -1,6 +1,10 @@
 package com.github.carlosmonteiro.structures.linkedlist;
 
+import com.github.carlosmonteiro.structures.Node;
+
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * @author Carlos Monteiro
@@ -22,7 +26,27 @@ public class Main {
         //reverse();
         //findMiddleValue();
         //findKthFromEnd();
-        partitionList();
+        //partitionList();
+        removeDuplicates();
+    }
+
+    public static void removeDuplicates() {
+        final LinkedList<Integer> ll = new LinkedList<>(0);
+        ll.append(0);
+        ll.append(1);
+
+        System.out.println("original -> " + ll.print());
+
+        ll.removeDuplicates();
+
+        System.out.println("new -> " + ll.print());
+
+        System.out.println("head -> " + ll.getHead().hashCode());
+        System.out.println("first -> " + ll.getNode(0).hashCode());
+
+        System.out.println("tail -> " + ll.getTail().hashCode());
+        System.out.println("last -> " + ll.getNode(ll.getLength() - 1).hashCode());
+
     }
 
     public static void partitionList() {

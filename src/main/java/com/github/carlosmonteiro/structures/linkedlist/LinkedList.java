@@ -3,6 +3,8 @@ package com.github.carlosmonteiro.structures.linkedlist;
 import com.github.carlosmonteiro.structures.Node;
 
 import java.util.Comparator;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * linked list.
@@ -116,7 +118,8 @@ public class LinkedList<T> {
         }
     }
 
-    private Node<T> getNode(final int index) {
+    //TODO - change to private
+    public Node<T> getNode(final int index) {
         if (index < 0 || index >= length) {
             return null;
         }
@@ -256,6 +259,33 @@ public class LinkedList<T> {
     }
 
     /**
+     * Note: this linked list class does NOT have a tail which will make this method easier to implement.
+     */
+    public void removeDuplicates() {
+        Node<T> previous = null;
+        Node<T> current = head;
+        final Set<T> occurrence = new HashSet<>();
+
+        while (current != null) {
+            Node<T> next = current.getNext();
+
+            if (occurrence.contains(current.getValue())) {
+                length--;
+                previous.setNext(next);
+
+                if (next == null) {
+                    tail = previous;
+                }
+            } else {
+                occurrence.add(current.getValue());
+                previous = current;
+            }
+
+            current = next;
+        }
+    }
+
+    /**
      * Given a value x this method will to rearrange the linked list such that all nodes with a
      * value less than x come before all nodes with a value greater than or equal to x.
      */
@@ -313,11 +343,6 @@ public class LinkedList<T> {
         }
     }
 
-    private Node<T> appendToNode(final Node<T> a, final T value) {
-        final Node<T> b = new Node<T>(value);
-        return appendTwoNodes(a, b);
-    }
-
     private Node<T> appendTwoNodes(Node<T> a, Node<T> b) {
         if (a == null) {
             a = b;
@@ -343,6 +368,34 @@ public class LinkedList<T> {
         }
 
         return null;
+    }
+
+    /**
+     * Added for test purpose, will be removed.
+     */
+    public Node<T> getFirst() {
+        return getNode(0);
+    }
+
+    /**
+     * Added for test purpose, will be removed.
+     */
+    public Node<T> getHead() {
+        return head;
+    }
+
+    /**
+     * Added for test purpose, will be removed.
+     */
+    public Node<T> getLast() {
+        return getNode(length - 1);
+    }
+
+    /**
+     * Added for test purpose, will be removed.
+     */
+    public Node<T> getTail() {
+        return tail;
     }
 
     public int getLength() {
