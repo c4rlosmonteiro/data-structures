@@ -72,6 +72,99 @@ public class DoublyLinkedList<T> {
         length++;
     }
 
+    public T removeFirst() {
+        if (isEmpty()) {
+            return null;
+        }
+
+        final Node<T> first = head;
+
+        if (first.getNext() == null) {
+            head = null;
+            tail = null;
+        } else {
+            head = first.getNext();
+            head.setPrev(null);
+
+            if (length == 1) {
+                tail = first.getNext();
+            }
+        }
+
+        length--;
+        return first.getValue();
+    }
+
+    public T get(final int index) {
+        final Node<T> node = getNode(index);
+
+        if (node != null) {
+            return node.getValue();
+        } else {
+            return null;
+        }
+    }
+
+    public boolean set(final int index, final T value) {
+        if (isInvalidPosition(index)) {
+            return false;
+        }
+
+        getNode(index).setValue(value);
+
+        return true;
+    }
+
+    public boolean insert(final int index, final T value) {
+        if (isInvalidPosition(index)) {
+            return false;
+        }
+
+        if (index == 0) {
+            prepend(value);
+            return true;
+        }
+
+        if (index == length) {
+            append(value);
+            return true;
+        }
+
+        final Node<T> node = new Node<>(value);
+        final Node<T> nodeAtPosition = getNode(index);
+        final Node<T> nodeAtPreviousPosition = nodeAtPosition.getPrev();
+
+        nodeAtPosition.setPrev(node);
+        node.setNext(nodeAtPreviousPosition.getNext());
+        nodeAtPreviousPosition.setNext(node);
+        node.setPrev(nodeAtPreviousPosition);
+
+        length++;
+        return true;
+    }
+
+    private Node<T> getNode(final int index) {
+        if (index < 0 || index >= length) {
+            return null;
+        }
+
+        Node<T> aux;
+
+        if (index <= length / 2) {
+            aux = head;
+            for (int i = 0; i < index; i++) {
+                aux = aux.getNext();
+            }
+        } else {
+            aux = tail;
+            for (int i = length - 1; i > index; i--) {
+                aux = aux.getPrev();
+            }
+        }
+
+        return aux;
+    }
+
     public int getLength() {
         return length;
     }

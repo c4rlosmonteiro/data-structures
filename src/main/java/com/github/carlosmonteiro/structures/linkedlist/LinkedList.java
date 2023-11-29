@@ -54,12 +54,12 @@ public class LinkedList<T> {
         }
 
         if (index == 0) {
-            append(value);
+            prepend(value);
             return true;
         }
 
         if (index == length) {
-            prepend(value);
+            append(value);
             return true;
         }
 

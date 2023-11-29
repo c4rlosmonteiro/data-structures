@@ -13,11 +13,11 @@ public class Main2 {
         System.out.println("Normal version ========");
         //append();
         //removeLast();
-        prepend();
+        //prepend();
         //removeFirst();
         //get();
         //set();
-        //insert();
+        insert();
         //remove();
         //reverse();
         //findMiddleValue();
@@ -190,23 +190,23 @@ public class Main2 {
     }
 
     public static void insert() {
-        final LinkedList<Integer> ll = new LinkedList<>(0);
+        final DoublyLinkedList<Integer> ll = new DoublyLinkedList<>(0);
         ll.append(1);
         ll.append(2);
         ll.append(3);
         ll.append(4);
-        System.out.println(ll.print());
+        System.out.println(ll.printWithPointers());
         System.out.println("");
         System.out.println("insert(2, 992) -> " + ll.insert(2, 992));
-        System.out.println(ll.print());
+        System.out.println(ll.printWithPointers());
         System.out.println("insert(0, 990) -> " + ll.insert(0, 990));
-        System.out.println(ll.print());
+        System.out.println(ll.printWithPointers());
         System.out.println("insert(6, 996) -> " + ll.insert(6, 996));
-        System.out.println(ll.print());
+        System.out.println(ll.printWithPointers());
         System.out.println("insert(9, 999) -> " + ll.insert(9, 999));
-        System.out.println(ll.print());
+        System.out.println(ll.printWithPointers());
         System.out.println("insert(-1, -991) -> " + ll.insert(-1, -991));
-        System.out.println(ll.print());
+        System.out.println(ll.printWithPointers());
     }
 
     public static void set() {
@@ -233,38 +233,42 @@ public class Main2 {
     }
 
     public static void get() {
-        final LinkedList<Integer> ll = new LinkedList<>(0);
+        final DoublyLinkedList<Integer> ll = new DoublyLinkedList<>(0);
         ll.append(1);
         ll.append(2);
         ll.append(3);
         ll.append(4);
-        System.out.println(ll.print());
+        System.out.println(ll.printWithPointers());
         System.out.println("get(0) -> " + ll.get(0));
         System.out.println("get(-1) -> " + ll.get(-1));
         System.out.println("get(5) -> " + ll.get(5));
         System.out.println("get(2) -> " + ll.get(2));
         System.out.println("get(4) -> " + ll.get(4));
+        System.out.println("get(3) -> " + ll.get(3));
 
-        final LinkedList<Integer> ll2 = new LinkedList<>(0);
+        final DoublyLinkedList<Integer> ll2 = new DoublyLinkedList<>(0);
         ll2.removeFirst();
-        System.out.println(ll2.print());
+        System.out.println(ll2.printWithPointers());
         System.out.println("get(-1) -> " + ll2.get(-1));
         System.out.println("get(0) -> " + ll2.get(0));
         System.out.println("get(1) -> " + ll2.get(1));
     }
 
     public static void removeFirst() {
-        final LinkedList<Integer> ll = new LinkedList<>(0);
+        final DoublyLinkedList<Integer> ll = new DoublyLinkedList<>(0);
         ll.append(1);
-        System.out.println(ll.print());
+        ll.append(2);
+        System.out.println(ll.printWithPointers());
         System.out.println("removed -> " + ll.removeFirst());
-        System.out.println(ll.print());
+        System.out.println(ll.printWithPointers());
         System.out.println("removed -> " + ll.removeFirst());
-        System.out.println(ll.print());
+        System.out.println(ll.printWithPointers());
+        System.out.println("removed -> " + ll.removeFirst());
+        System.out.println(ll.printWithPointers());
         System.out.println("append -> 1, 2");
         ll.append(1);
         ll.append(2);
-        System.out.println(ll.print());
+        System.out.println(ll.printWithPointers());
     }
 
     public static void prepend() {
