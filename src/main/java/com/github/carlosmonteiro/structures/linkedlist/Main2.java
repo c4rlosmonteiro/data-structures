@@ -12,8 +12,8 @@ public class Main2 {
         //removeLastR();
         System.out.println("Normal version ========");
         //append();
-        removeLast();
-        //prepend();
+        //removeLast();
+        prepend();
         //removeFirst();
         //get();
         //set();
@@ -268,18 +268,18 @@ public class Main2 {
     }
 
     public static void prepend() {
-        final LinkedList<Integer> ll = new LinkedList<>(0);
+        final DoublyLinkedList<Integer> ll = new DoublyLinkedList<>(0);
         ll.append(1);
         ll.append(2);
-        System.out.println(ll.print());
+        System.out.println(ll.printWithPointers());
         ll.prepend(-1);
-        System.out.println(ll.print());
+        System.out.println(ll.printWithPointers());
 
-        final LinkedList<Integer> ll2 = new LinkedList<>(0);
+        final DoublyLinkedList<Integer> ll2 = new DoublyLinkedList<>(0);
         ll2.removeLast();
-        System.out.println(ll2.print());
+        System.out.println(ll2.printWithPointers());
         ll2.prepend(0);
-        System.out.println(ll2.print());
+        System.out.println(ll2.printWithPointers());
     }
 
     public static void append() {

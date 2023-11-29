@@ -57,6 +57,21 @@ public class DoublyLinkedList<T> {
         }
     }
 
+    public void prepend(final T value) {
+        final Node<T> node = new Node<>(value);
+        node.setNext(head);
+
+        if (!isEmpty()) {
+            head.setPrev(node);
+        } else {
+            tail = node;
+        }
+
+        head = node;
+
+        length++;
+    }
+
     public int getLength() {
         return length;
     }
@@ -95,6 +110,10 @@ public class DoublyLinkedList<T> {
         Node<T> aux = head;
 
         //stringBuilder.append("[");
+
+        if (isEmpty()) {
+            stringBuilder.append("[]");
+        }
 
         while (aux != null) {
             stringBuilder.append("[");
