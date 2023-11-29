@@ -1,22 +1,18 @@
 package com.github.carlosmonteiro.structures.linkedlist;
 
-import com.github.carlosmonteiro.structures.Node;
-
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
+import com.github.carlosmonteiro.structures.doublylinkedlist.DoublyLinkedList;
 
 /**
  * @author Carlos Monteiro
  */
-public class Main {
+public class Main2 {
     public static void main(final String[] args) {
         //System.out.println("Recursive version ========");
         //appendR();
         //removeLastR();
         System.out.println("Normal version ========");
         //append();
-        //removeLast();
+        removeLast();
         //prepend();
         //removeFirst();
         //get();
@@ -29,7 +25,7 @@ public class Main {
         //partitionList();
         //removeDuplicates();
         //binaryToDecimal();
-        reverserBetween();
+        //reverserBetween();
     }
 
     public static void reverserBetween() {
@@ -287,58 +283,30 @@ public class Main {
     }
 
     public static void append() {
-        final LinkedList<Integer> ll = new LinkedList<>(0);
-        System.out.println(ll.print());
+        final DoublyLinkedList<Integer> ll = new DoublyLinkedList<>(0);
+        System.out.println(ll.printWithPointers());
         ll.append(1);
-        System.out.println(ll.print());
+        System.out.println(ll.printWithPointers());
         ll.append(2);
-        System.out.println(ll.print());
+        System.out.println(ll.printWithPointers());
     }
 
     public static void removeLast() {
         System.out.println("Initial: ");
 
-        final LinkedList<Integer> ll = new LinkedList<>(0);
+        final DoublyLinkedList<Integer> ll = new DoublyLinkedList<>(0);
         ll.append(1);
-        System.out.println(ll.print());
+        System.out.println(ll.printWithPointers());
 
         System.out.println("Removing last: ");
 
         Integer removed = ll.removeLast();
-        System.out.println("--" + removed + " => " + ll.print());
+        System.out.println("--" + removed + " => " + ll.printWithPointers());
 
         removed = ll.removeLast();
-        System.out.println("--" + removed + " => " + ll.print());
+        System.out.println("--" + removed + " => " + ll.printWithPointers());
 
         removed = ll.removeLast();
-        System.out.println("--" + removed + " => " + ll.print());
-    }
-
-    public static void appendR() {
-        final LinkedListR<Integer> ll = new LinkedListR<>(0);
-        System.out.println(ll.print());
-        ll.append(1);
-        System.out.println(ll.print());
-        ll.append(2);
-        System.out.println(ll.print());
-    }
-
-    public static void removeLastR() {
-        System.out.println("Initial: ");
-
-        final LinkedListR<Integer> ll = new LinkedListR<>(0);
-        ll.append(1);
-        System.out.println(ll.print());
-
-        System.out.println("Removing last: ");
-
-        Integer removed = ll.removeLast();
-        System.out.println("--" + removed + " => " + ll.print());
-
-        removed = ll.removeLast();
-        System.out.println("--" + removed + " => " + ll.print());
-
-        removed = ll.removeLast();
-        System.out.println("--" + removed + " => " + ll.print());
+        System.out.println("--" + removed + " => " + ll.printWithPointers());
     }
 }
