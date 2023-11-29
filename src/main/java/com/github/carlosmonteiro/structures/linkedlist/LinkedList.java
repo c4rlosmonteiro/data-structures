@@ -299,6 +299,38 @@ public class LinkedList<T> {
         return decimal;
     }
 
+    public void reverseBetween(final int startIndex, final int endIndex) {
+        final int previousIndex = startIndex - 1;
+        final Node<T> beforeReversedNode = getNode(Math.max(previousIndex, 0));
+        Node<T> nodeToReverse  = previousIndex < 0 ? beforeReversedNode : beforeReversedNode.getNext();
+        Node<T> reversedPart = null;
+        Node<T> firstReversedNode = null;
+
+        for (int i = Math.max(previousIndex, 0); i <= endIndex && nodeToReverse != null; i++) {
+            final Node<T> nextNodeToReverse = nodeToReverse.getNext();
+
+            if (reversedPart != null) {
+                nodeToReverse.setNext(reversedPart);
+                reversedPart = nodeToReverse;
+            } else {
+                reversedPart = nodeToReverse;
+                nodeToReverse.setNext(null);
+                firstReversedNode = nodeToReverse;
+            }
+
+            nodeToReverse  = nextNodeToReverse;
+        }
+
+        if (previousIndex >= 0) {
+            beforeReversedNode.setNext(reversedPart);
+        } else {
+            head = reversedPart;
+        }
+
+        if (firstReversedNode != null) {
+            firstReversedNode.setNext(nodeToReverse);
+        }
+    }
 
     /**
      * Given a value x this method will to rearrange the linked list such that all nodes with a
@@ -441,7 +473,7 @@ public class LinkedList<T> {
         }
 
         stringBuilder.append("]");
-        stringBuilder.append(" l=" + length);
+        stringBuilder.append(" l=").append(length);
         return stringBuilder.toString();
     }
 }
