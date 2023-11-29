@@ -6,6 +6,7 @@ package com.github.carlosmonteiro.structures;
 public final class Node<T> {
     private T value;
     private Node<T> next;
+    private Node<T> prev;
 
     public Node(final T value) {
         this.value = value;
@@ -29,6 +30,14 @@ public final class Node<T> {
 
     public boolean hasNext() {
         return next != null;
+    }
+
+    public void setPrev(Node<T> prev) {
+        this.prev = prev;
+    }
+
+    public Node<T> getPrev() {
+        return prev;
     }
 
     @Override
