@@ -17,15 +17,54 @@ public class Main2 {
         //removeFirst();
         //get();
         //set();
-        insert();
+        //insert();
         //remove();
+
+        //swapFirstLast();
         //reverse();
+        isPalindrome();
+
         //findMiddleValue();
         //findKthFromEnd();
         //partitionList();
         //removeDuplicates();
         //binaryToDecimal();
         //reverserBetween();
+    }
+
+    public static void isPalindrome() {
+        final DoublyLinkedList<Integer> ll = new DoublyLinkedList<>(1);
+        ll.append(2);
+        ll.append(3);
+        ll.append(2);
+        ll.append(1);
+
+        System.out.println("original -> " + ll.printWithPointers());
+        System.out.println("isPalindrome="+ll.isPalindrome());
+
+
+    }
+
+    public static void swapFirstLast() {
+        final DoublyLinkedList<Integer> ll = new DoublyLinkedList<>(1);
+        ll.append(2);
+        ll.append(3);
+
+        System.out.println("original -> " + ll.printWithPointers());
+        ll.swapFirstLast();
+        System.out.println("-> " + ll.printWithPointers());
+        ll.removeLast();
+        ll.swapFirstLast();
+        System.out.println("-> " + ll.printWithPointers());
+        ll.removeLast();
+        ll.swapFirstLast();
+        System.out.println("-> " + ll.printWithPointers());
+        ll.removeLast();
+        ll.swapFirstLast();
+        System.out.println("-> " + ll.printWithPointers());
+        ll.removeLast();
+        ll.swapFirstLast();
+        System.out.println("-> " + ll.printWithPointers());
     }
 
     public static void reverserBetween() {
@@ -121,18 +160,18 @@ public class Main2 {
     }
 
     public static void reverse() {
-        final LinkedList<Integer> ll = new LinkedList<>(0);
+        final DoublyLinkedList<Integer> ll = new DoublyLinkedList<>(0);
         ll.append(1);
         ll.append(2);
         ll.append(3);
         ll.append(4);
-        System.out.println(ll.print());
+        System.out.println(ll.printWithPointers());
         System.out.println("reverse");
         ll.reverse();
-        System.out.println(ll.print());
+        System.out.println(ll.printWithPointers());
         System.out.println("reverse");
         ll.reverse();
-        System.out.println(ll.print());
+        System.out.println(ll.printWithPointers());
 
         final LinkedList<Integer> ll2 = new LinkedList<>(0);
         ll2.removeFirst();
@@ -164,28 +203,28 @@ public class Main2 {
     }
 
     public static void remove() {
-        final LinkedList<Integer> ll = new LinkedList<>(0);
+        final DoublyLinkedList<Integer> ll = new DoublyLinkedList<>(0);
         ll.append(1);
         ll.append(2);
         ll.append(3);
         ll.append(4);
-        System.out.println(ll.print());
+        System.out.println(ll.printWithPointers());
         System.out.println("remove(2) -> " + ll.remove(2));
-        System.out.println(ll.print());
+        System.out.println(ll.printWithPointers());
         System.out.println("remove(0) -> " + ll.remove(0));
-        System.out.println(ll.print());
+        System.out.println(ll.printWithPointers());
         System.out.println("remove(2) -> " + ll.remove(2));
-        System.out.println(ll.print());
+        System.out.println(ll.printWithPointers());
         System.out.println("remove(2) -> " + ll.remove(2));
-        System.out.println(ll.print());
+        System.out.println(ll.printWithPointers());
         System.out.println("remove(-1) -> " + ll.remove(-1));
-        System.out.println(ll.print());
+        System.out.println(ll.printWithPointers());
         System.out.println("remove(0) -> " + ll.remove(0));
-        System.out.println(ll.print());
+        System.out.println(ll.printWithPointers());
         System.out.println("remove(0) -> " + ll.remove(0));
-        System.out.println(ll.print());
+        System.out.println(ll.printWithPointers());
         System.out.println("remove(0) -> " + ll.remove(0));
-        System.out.println(ll.print());
+        System.out.println(ll.printWithPointers());
 
     }
 

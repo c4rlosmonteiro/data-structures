@@ -143,6 +143,103 @@ public class DoublyLinkedList<T> {
         return true;
     }
 
+    public T remove(final int index) {
+        if (isInvalidPosition(index) || isEmpty()) {
+            return null;
+        }
+
+        if (index == 0) {
+            return removeFirst();
+        }
+
+        if (index == length - 1) {
+            return removeLast();
+        }
+
+        final Node<T> removedNode = getNode(index);
+
+        removedNode.getPrev().setNext(removedNode.getNext());
+        removedNode.getNext().setPrev(removedNode.getPrev());
+
+        length--;
+
+        return removedNode.getValue();
+    }
+
+    public void swapFirstLast() {
+        if (length >= 2) {
+            final T headValue = head.getValue();
+            head.setValue(tail.getValue());
+            tail.setValue(headValue);
+        }
+    }
+
+    /***
+     * This method should reverse the order of the nodes in the list by manipulating the pointers of each node,
+     * not by swapping the values within the nodes.
+     */
+    public void reverse() {
+        Node<T> previous = null;
+        Node<T> actual = head;
+
+        while (actual != null) {
+            Node<T> next = actual.getNext();
+            actual.setNext(previous);
+            actual.setPrev(next);
+            previous = actual;
+            actual = next;
+        }
+
+        final Node<T> aux = tail;
+        tail = head;
+        head = aux;
+    }
+
+    /**
+     * Write a method to determine whether a given doubly linked list reads the same forwards and backwards.
+     * For example, if the list contains the values [1, 2, 3, 2, 1], then the method should return true, since the list is a palindrome.
+    */
+    public boolean isPalindrome() {
+        if (length == 1 || isEven()) {
+            return allSameValues();
+        }
+
+        final int middleNodeIndex = length / 2;
+        final Node<T> middleNode = getNode(middleNodeIndex);
+
+        Node<T> left = middleNode.getPrev();
+        Node<T> right = middleNode.getNext();
+
+        while (right != null && left != null) {
+            if (left.getValue() != right.getValue()) {
+                return false;
+            }
+
+            right = right.getNext();
+            left = left.getPrev();
+        }
+
+       return true;
+    }
+
+    private boolean allSameValues() {
+        Node<T> aux = head;
+
+        while (aux != null && aux.getNext() != null) {
+            if (aux.getValue() != aux.getNext().getValue()) {
+                return false;
+            }
+
+            aux = aux.getNext();
+        }
+
+        return true;
+    }
+
+    private boolean isEven() {
+        return length % 2 == 0;
+    }
+
     private Node<T> getNode(final int index) {
         if (index < 0 || index >= length) {
             return null;
