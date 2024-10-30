@@ -22,7 +22,8 @@ public class Main2 {
 
         //swapFirstLast();
         //reverse();
-        isPalindrome();
+        //isPalindrome();
+        swapPairs();
 
         //findMiddleValue();
         //findKthFromEnd();
@@ -351,5 +352,18 @@ public class Main2 {
 
         removed = ll.removeLast();
         System.out.println("--" + removed + " => " + ll.printWithPointers());
+    }
+
+
+    public static void swapPairs() {
+        final DoublyLinkedList<Integer> ll = new DoublyLinkedList<>(1);
+        ll.append(2);
+        ll.append(3);
+        ll.append(4);
+
+        System.out.println(ll.printWithPointers());
+        ll.swapPairs();
+        System.out.println(":::::: After swap! ::::::");
+        System.out.println(ll.printWithPointers());
     }
 }

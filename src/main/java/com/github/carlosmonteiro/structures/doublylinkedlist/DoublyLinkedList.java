@@ -299,8 +299,6 @@ public class DoublyLinkedList<T> {
 
         Node<T> aux = head;
 
-        //stringBuilder.append("[");
-
         if (isEmpty()) {
             stringBuilder.append("[]");
         }
@@ -323,5 +321,40 @@ public class DoublyLinkedList<T> {
                 .append(" tail=").append(tail != null ? tail.getValue() : null)
                 .append(" head=").append(head != null ? head.getValue() : null);
         return stringBuilder.toString();
+    }
+
+    public void swapPairs() {
+        Node<T> firstPairItem = head;
+
+        while (firstPairItem != null && firstPairItem.getNext() != null) {
+            final Node<T> secondPairItem = firstPairItem.getNext();
+
+            secondPairItem.setPrev(firstPairItem.getPrev());
+
+            firstPairItem.setNext(secondPairItem.getNext());
+            firstPairItem.setPrev(secondPairItem);
+
+            secondPairItem.setNext(firstPairItem);
+
+            final Node<T> firstPairItemNext = firstPairItem.getNext();
+
+            if (firstPairItemNext != null) {
+                firstPairItemNext.setPrev(firstPairItem);
+
+                if (firstPairItemNext.getNext() != null) {
+                    firstPairItem.setNext(firstPairItemNext.getNext());
+                }
+            }
+
+            if (firstPairItem.getNext() == null) {
+                tail = firstPairItem;
+            }
+
+            firstPairItem = firstPairItemNext;
+
+            if (secondPairItem.getPrev() == null) {
+                head = secondPairItem;
+            }
+        }
     }
 }
