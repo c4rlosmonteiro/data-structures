@@ -1,6 +1,6 @@
-package com.github.carlosmonteiro.structures.linkedlist;
+package com.github.carlosmonteiro.structures.doublylinkedlist;
 
-import com.github.carlosmonteiro.structures.doublylinkedlist.DoublyLinkedList;
+import com.github.carlosmonteiro.structures.linkedlist.LinkedList;
 
 /**
  * @author Carlos Monteiro
