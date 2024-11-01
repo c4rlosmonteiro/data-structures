@@ -5,7 +5,7 @@ import com.github.carlosmonteiro.structures.linkedlist.LinkedList;
 /**
  * @author Carlos Monteiro
  */
-public class Main2 {
+public class Main {
     public static void main(final String[] args) {
         //System.out.println("Recursive version ========");
         //appendR();
