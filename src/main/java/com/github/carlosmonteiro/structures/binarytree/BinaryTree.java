@@ -18,6 +18,32 @@ public class BinaryTree<T extends Comparable<T>> {
 
     }
 
+    public boolean contains(final T value) {
+        if (value == null || root == null) {
+            return false;
+        }
+
+        NodeTree<T> actual = root;
+
+        while (true) {
+            if (value.compareTo(actual.getValue()) > 0) {
+                if (actual.getRight() != null) {
+                    actual = actual.getRight();
+                } else {
+                    return false;
+                }
+            } else if (value.compareTo(actual.getValue()) < 0) {
+                if (actual.getLeft() != null) {
+                    actual = actual.getLeft();
+                } else {
+                    return false;
+                }
+            } else {
+                return true;
+            }
+        }
+    }
+
     public boolean insert(final T value) {
         Objects.requireNonNull(value);
 
