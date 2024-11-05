@@ -1,8 +1,6 @@
 package com.github.carlosmonteiro.structures.binarytree;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
 import java.util.Objects;
 
 public class BinaryTree<T extends Comparable<T>> {
